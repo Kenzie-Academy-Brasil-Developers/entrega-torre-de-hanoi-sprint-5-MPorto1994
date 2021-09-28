@@ -3,7 +3,7 @@
     display: flex;
 }
 
-#towerStart {
+.tower {
     width: 300px;
     height: 300px;
     display:flex;
