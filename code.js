@@ -1,5 +1,8 @@
 // Matheus
 
+let wasClicked = false;
+let clickedBefore = 0
+
 let blueDisc = document.getElementById("blue")
 let purpleDisc = document.getElementById("purple")
 let greenDisc = document.getElementById("green")
@@ -19,33 +22,30 @@ let columnEnd = document.getElementById("towerEnd")
 // (Se o movimento é possível)
 function smallerDisc(usingDisc , column){
     let hierarq =  ["red","green", "purple", "blue"];
-    if(hierarq.indexOf(usingDisc)<hierarq.indexOf(searchHighest(column))){
+    if(hierarq.indexOf(usingDisc)<hierarq.indexOf(searchHighest(column))||searchHighest(column).id===""){
+        console.log("ok")
         return true
     }
-    else{
+    else {
         console.log("Esta operação não é permitida")
         return false
     }
 }
+
 // smallerDisc("green",columnOffSet)
 
 // Procura qual é o disco do topo
-function searchHighest({column}){
-    console.log(column,"oi aqui")
+function searchHighest(column){
 
-    let highest = column.querySelectorAll("div")[1];
-    // console.log(highest.id)
+    let highest = column.firtsElementChild;
     return highest
 }
-console.log(searchHighest(columnStart))
-// console.log(columnStart.querySelectorAll("div")[1])
 // towers[1].addEventListener("click", wasClickedOn)
 
 // Conferi em qual div foi clicada
 function wasClickedOn(event){
     let column = document.getElementById(event.currentTarget.id)
-    // console.log( column, "wasClicked")
-    return (column)
+    return column
 }
 
 // Cria um novo disco com estilo predefinido
@@ -57,37 +57,29 @@ function addDisc(disc,column){
 }
 addDisc("green",columnEnd)
 
-// console.log(wasClickedOn())
 
-let wasClicked = false;
-let clickedBefore = 1
+
 
 function mainFunc (event){
-    // console.log(searchHighest(wasClickedOn(event)).id)
-    // console.log(wasClickedOn(event))
-    // console.log(columnStart)
-    // console.log(document.getElementById(wasClickedOn(event)))
-    // console.log(searchHighest(wasClickedOn(event)).id)[
     let columnToGo = wasClickedOn(event)
     let columnFrom = clickedBefore
     let topDiscOut = searchHighest(clickedBefore)
     let topDiscToIn = searchHighest(columnToGo)
 
-    console.log(smallerDisc(topDiscOut.id,columnToGo))
-
+    
     if (wasClicked==true){
         // wasClickedOn(event)
         if(smallerDisc(topDiscOut.id,columnToGo)){
-            console.log(smallerDisc(topDiscOut.id,columnToGo))
+            console.log("segundo clique, e smaller disc funcionou")
         }
         else{
-            return("não entrou")
+            console.log( "não entrou")
         }
         wasClicked=false
     }
     else{
         clickedBefore = wasClickedOn(event)
-        console.log(clickedBefore, "clickedBefore")
+        // console.log(clickedBefore, "clickedBefore")
         wasClicked = true;
     }
     
