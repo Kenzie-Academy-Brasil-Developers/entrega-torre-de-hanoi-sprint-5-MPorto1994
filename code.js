@@ -21,9 +21,9 @@ let columnEnd = document.getElementById("towerEnd")
 // Testa se o disco é menor que os que estão na coluna ou não 
 // (Se o movimento é possível)
 function smallerDisc(usingDisc , column){
+    console.log("esse",usingDisc.className)
     let hierarq =  ["red","green", "purple", "blue"];
-    if(hierarq.indexOf(usingDisc)<hierarq.indexOf(searchHighest(column))||searchHighest(column).id===""){
-        console.log("ok")
+    if(hierarq.indexOf(usingDisc.id)<hierarq.indexOf(searchHighest(column))||searchHighest(column).id===""){
         return true
     }
     else {
@@ -37,7 +37,8 @@ function smallerDisc(usingDisc , column){
 // Procura qual é o disco do topo
 function searchHighest(column){
 
-    let highest = column.firtsElementChild;
+    let highest = column.firstElementChild;
+    console.log(highest)
     return highest
 }
 // towers[1].addEventListener("click", wasClickedOn)
@@ -53,9 +54,9 @@ function addDisc(disc,column){
     let newDisc = document.createElement("div")
     // newDisc.className=discs;
     newDisc.id=disc;
-    column.appendChild(newDisc)
+    column.insertBefore(newDisc,column.firstElementChild)   
 }
-addDisc("green",columnEnd)
+// addDisc("green",columnEnd)
 
 
 
@@ -69,8 +70,12 @@ function mainFunc (event){
     
     if (wasClicked==true){
         // wasClickedOn(event)
-        if(smallerDisc(topDiscOut.id,columnToGo)){
+        if(smallerDisc(topDiscOut,columnToGo)){
             console.log("segundo clique, e smaller disc funcionou")
+            // console.log(topDiscOut)
+            // console.log(columnToGo)
+            topDiscOut.remove()
+            addDisc(topDiscOut.id,columnToGo)
         }
         else{
             console.log( "não entrou")
