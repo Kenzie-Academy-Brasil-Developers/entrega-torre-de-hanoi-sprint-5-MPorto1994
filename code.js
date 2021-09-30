@@ -30,7 +30,9 @@ function smallerDisc(usingDisc , column){
 // smallerDisc("green",columnOffSet)
 
 // Procura qual é o disco do topo
-function searchHighest(column){
+function searchHighest({column}){
+    console.log(column,"oi aqui")
+
     let highest = column.querySelectorAll("div")[1];
     // console.log(highest.id)
     return highest
@@ -42,7 +44,7 @@ console.log(searchHighest(columnStart))
 // Conferi em qual div foi clicada
 function wasClickedOn(event){
     let column = document.getElementById(event.currentTarget.id)
-    // console.log( searchBigger(column))
+    // console.log( column, "wasClicked")
     return (column)
 }
 
@@ -58,7 +60,8 @@ addDisc("green",columnEnd)
 // console.log(wasClickedOn())
 
 let wasClicked = false;
-let clickedBefore = 0
+let clickedBefore = 1
+
 function mainFunc (event){
     // console.log(searchHighest(wasClickedOn(event)).id)
     // console.log(wasClickedOn(event))
@@ -66,7 +69,7 @@ function mainFunc (event){
     // console.log(document.getElementById(wasClickedOn(event)))
     // console.log(searchHighest(wasClickedOn(event)).id)[
     let columnToGo = wasClickedOn(event)
-    // let columnFrom = clickedBefore
+    let columnFrom = clickedBefore
     let topDiscOut = searchHighest(clickedBefore)
     let topDiscToIn = searchHighest(columnToGo)
 
@@ -84,13 +87,14 @@ function mainFunc (event){
     }
     else{
         clickedBefore = wasClickedOn(event)
+        console.log(clickedBefore, "clickedBefore")
         wasClicked = true;
     }
     
 
     
-    smallerDisc()
-    wasClickedOn()
+    // smallerDisc()
+    // wasClickedOn()
     // remover da outra torre
 
 
