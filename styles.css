@@ -1,0 +1,49 @@
+/* Matheus */
+#game {
+    display: flex;
+}
+
+.tower {
+    width: 300px;
+    height: 300px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    align-items:center;
+}
+.column {
+    height: 250px;
+    width: 10px;
+    background-color: #000;
+    position:absolute;
+    z-index:-1
+}
+.discs {
+    height: 20px;
+}
+#red {
+    background-color: red;
+    width: 200px;
+    height: 20px;
+}
+#green {
+    background-color: green;
+    width: 150px;
+    height: 20px;
+}
+#purple {
+    background-color: purple;
+    width: 100px;
+    height: 20px;
+}
+
+#blue {
+    background-color: blue;
+    width: 50px;
+    height: 20px;
+}
+/* Matheus */
+
+/* Adriel */
+
+/* Adriel */
