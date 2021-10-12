@@ -42,8 +42,9 @@
     width: 50px;
     height: 20px;
 }
-/* Matheus */
 
-/* Adriel */
-
-/* Adriel */
+.result {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
